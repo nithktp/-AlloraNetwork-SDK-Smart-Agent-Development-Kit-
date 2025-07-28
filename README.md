@@ -74,14 +74,19 @@ In nano: Ctrl+x , Enter y then Enter
 Create a Tiingo account and get your API key: https://www.tiingo.com/account/api/token
 
 
-4. Configure the Agent
+4. Create a YAML config file
+
+   nano agent_config.yaml
+
+   Paste this content into the file
 
    agent_name: "btc-price-monitor"
-tick_interval: 60  # seconds
-data_sources:
+   tick_interval: 60  # seconds
+   data_sources:
   - type: tiingo
     api_key: ${TIINGO_API_KEY}
 
+    
 5. Run Agent Locally  
    
    make run-agent
