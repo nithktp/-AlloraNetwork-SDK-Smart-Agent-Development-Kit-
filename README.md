@@ -25,49 +25,101 @@ go version
 
 3. Allora SDK
 
-git clone https://github.com/allora-network/allora-model-maker.git
-cd allora-model-maker
+git clone https://github.com/allora-network/allora-smart-agent-sdk.git
+cd allora-smart-agent-sdk
 
-4. Setup Tiingo API Key
+
+Environment Setup
+
+1. Install Miniconda & Create Environment
+
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh
+bash miniconda.sh -b -p $HOME/miniconda
+export PATH="$HOME/miniconda/bin:$PATH"
+conda init
+source ~/.bashrc
+conda create -n smartagent python=3.11 -y
+conda activate smartagent
+
+
+2. Install Python Dependencies
+
+pip install -r requirements.txt
+
+ Build Your Smart Agent
+
+1. Define Agent Behavior
+
+from allora_sdk.agents import BaseSmartAgent
+
+class MyPriceMonitorAgent(BaseSmartAgent):
+    def on_start(self):
+        self.log("Agent initialized.")
+
+    async def on_tick(self):
+        price = await self.fetch_price("BTC")
+        if price > 70000:
+            await self.publish_signal("sell", {"price": price})
+
+2. Setup Tiingo API Key
 
 Create a Tiingo account and get your
 API key: https://www.tiingo.com/account/api/token
 
-nano .env
-TIINGO_API_KEY=your_api_key_here
 
-Install Miniconda
+3. Configure the Agent
 
-mkdir -p ~/miniconda3
-wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda3/miniconda.sh
-bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3
-rm ~/miniconda3/miniconda.sh
-export PATH="~/miniconda3/bin:$PATH"
+   agent_name: "btc-price-monitor"
+tick_interval: 60  # seconds
+data_sources:
+  - type: tiingo
+    api_key: ${TIINGO_API_KEY}
 
-Create Conda Environment
+4. Run Agent Locally  
+   
+   make run-agent
 
-conda create --name modelmaker python=3.11 -y
-conda activate modelmaker
+ Test Agent Logic
+ 
+1. Unit Test
 
-Verify Python Version
+    pytest tests/
 
-python --version  # Should be 3.11.x
+2. Integration Simulation
 
-Install Required Python Packages
+   make simulate
+ 
+ Package & Deploy
 
-pip install setuptools==72.1.0 Cython==3.0.11 numpy==1.24.3 pystan
+1. Package Agent for Deployment
 
- Clean requirements.txt
- nano requirements.txt
+  make package-agent
 
-Then install the rest
+2. Deploy to Allora Network
 
-pip install -r requirements.txt
+   allora-cli login
+   allora-cli deploy agent-package.tar.gz
 
+   
+✅ Done!
+Your Smart Agent is now running and integrated into the Allora decentralized intelligence layer, autonomously reacting to data and collaborating with other agents and models.
 
+🛠️ Optional: Monitoring & Analytics
+Expected future features:
 
+Web UI for observing agent behavior
 
+On-chain activity dashboard
 
+Real-time telemetry via WebSocket
+
+📌 Summary of Future Capabilities (Speculative)
+Feature	Status
+Reactive agent framework	✅ Expected
+Modular design (plug-n-play models)	✅ Expected
+Real-time collaboration	✅ Expected
+CLI & Web Dashboards	🚧 In Development
+On-chain signal reporting	✅ Expected
 
 
 
