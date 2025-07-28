@@ -71,8 +71,7 @@ In nano: Ctrl+x , Enter y then Enter
 
 3. Setup Tiingo API Key
 
-Create a Tiingo account and get your
-API key: https://www.tiingo.com/account/api/token
+Create a Tiingo account and get your API key: https://www.tiingo.com/account/api/token
 
 
 4. Configure the Agent
