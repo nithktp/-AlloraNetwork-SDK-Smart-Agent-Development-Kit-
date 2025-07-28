@@ -50,6 +50,10 @@ pip install -r requirements.txt
 
 1. Define Agent Behavior
 
+nano my_agent.py
+
+2. Paste your Python code into it
+
 from allora_sdk.agents import BaseSmartAgent
 
 class MyPriceMonitorAgent(BaseSmartAgent):
@@ -60,14 +64,18 @@ class MyPriceMonitorAgent(BaseSmartAgent):
         price = await self.fetch_price("BTC")
         if price > 70000:
             await self.publish_signal("sell", {"price": price})
+Save and close the file:
 
-2. Setup Tiingo API Key
+In nano: Ctrl+x , Enter y then Enter
+
+
+3. Setup Tiingo API Key
 
 Create a Tiingo account and get your
 API key: https://www.tiingo.com/account/api/token
 
 
-3. Configure the Agent
+4. Configure the Agent
 
    agent_name: "btc-price-monitor"
 tick_interval: 60  # seconds
@@ -75,7 +83,7 @@ data_sources:
   - type: tiingo
     api_key: ${TIINGO_API_KEY}
 
-4. Run Agent Locally  
+5. Run Agent Locally  
    
    make run-agent
 
