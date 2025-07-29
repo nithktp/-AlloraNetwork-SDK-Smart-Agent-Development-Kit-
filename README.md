@@ -19,9 +19,11 @@ This guide walks you through developing, testing, and deploying **Smart Agents**
 
 ### 1. Install Core Tools
 
-```bash
+```
 sudo apt update && sudo apt upgrade -y
 sudo apt install git curl docker.io -y
+```
+
 
 ### 2. Install Go
 
