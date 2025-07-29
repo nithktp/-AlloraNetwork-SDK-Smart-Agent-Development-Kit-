@@ -13,9 +13,9 @@ This guide walks you through developing, testing, and deploying **Smart Agents**
 
 ---
 
-## ⚙️ Installation & Setup
+ Installation & Setup
 
-### 1. Install Core Tools
+1. Install Core Tools
 
 ```bash
 sudo apt update && sudo apt upgrade -y
