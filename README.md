@@ -83,8 +83,10 @@ class MyPriceMonitorAgent(BaseSmartAgent):
         if price > 119000:
             await self.publish_signal("buy", {"price": price})
 ```
-```
-### To save: Ctrl + X, then press Y and Enter
-```
+ To save: Ctrl + X, then press Y and Enter
 
+ ### 2: Setup Tiingo API Key
+ 
+1. Create a Tiingo account
+2. Export your key as an environment variable:
 
