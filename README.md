@@ -39,3 +39,8 @@ go version
 echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.bashrc
 source ~/.bashrc
 ```
+ 3: Clone Allora SDK
+```bash
+git clone https://github.com/allora-network/allora-smart-agent-sdk.git
+cd allora-smart-agent-sdk
+```
