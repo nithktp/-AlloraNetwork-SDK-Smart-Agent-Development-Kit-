@@ -44,7 +44,7 @@ source ~/.bashrc
 git clone https://github.com/allora-network/allora-smart-agent-sdk.git
 cd allora-smart-agent-sdk
 ```
-##⚙️ Environment Setup
+## ⚙️ Environment Setup
 
 ### 1: Install Miniconda & Create Python Environment
 ```bash
@@ -82,6 +82,9 @@ class MyPriceMonitorAgent(BaseSmartAgent):
         price = await self.fetch_price("BTC")
         if price > 119000:
             await self.publish_signal("buy", {"price": price})
+```
+```
+### To save: Ctrl + X, then press Y and Enter
 ```
 
 
