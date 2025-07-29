@@ -20,3 +20,10 @@ This guide walks you through developing, testing, and deploying **Smart Agents**
 ```bash
 sudo apt update && sudo apt upgrade -y
 sudo apt install git curl docker.io -y
+
+2. Install Go
+
+curl -OL https://go.dev/dl/go1.22.4.linux-amd64.tar.gz
+sudo tar -C /usr/local -xvf go1.22.4.linux-amd64.tar.gz
+export PATH=$PATH:/usr/local/go/bin
+go version
