@@ -89,4 +89,52 @@ class MyPriceMonitorAgent(BaseSmartAgent):
  
 1. Create a Tiingo account
 2. Export your key as an environment variable:
+```bash
+export TIINGO_API_KEY=your_actual_key_here
+```
+###  3: Create YAML Config File
+```bash
+nano agent_config.yaml
+```
+Paste the following:
+```bash
+agent_name: "btc-price-monitor"
+tick_interval: 60  # seconds
+data_sources:
+  - type: tiingo
+    api_key: ${Enter the TIINGO_API_KEY}
+```
+### 🚀 Run Agent Locally
+```bash
+make run-agent
+```
+## 🧪 Test Agent Logic
+### ✅ Unit Tests
+```bash
+pytest tests/
+```
+### 🔄 Integration Simulation
+```bash
+make simulate
+```
+## 📦 Package & Deploy
+
+###  1: Package Agent
+```bash
+make package-agent
+```
+### 2: Deploy to Allora Network
+```bash
+allora-cli login
+allora-cli deploy agent-package.tar.gz
+```
+---
+
+## ✅ Done!
+Your Smart Agent is now deployed and actively collaborating with the Allora decentralized intelligence network.
+
+
+
+
+
 
