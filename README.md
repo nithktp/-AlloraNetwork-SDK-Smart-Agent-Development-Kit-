@@ -22,5 +22,4 @@ sudo apt update && sudo apt upgrade -y
 sudo apt install git curl docker.io -y
 
 ---
-
-## 2. Install Go
+## Install Go
