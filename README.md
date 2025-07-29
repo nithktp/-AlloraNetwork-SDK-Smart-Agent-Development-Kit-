@@ -39,8 +39,49 @@ go version
 echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.bashrc
 source ~/.bashrc
 ```
- 3: Clone Allora SDK
+### 3: Clone Allora SDK
 ```bash
 git clone https://github.com/allora-network/allora-smart-agent-sdk.git
 cd allora-smart-agent-sdk
 ```
+##⚙️ Environment Setup
+
+### 1: Install Miniconda & Create Python Environment
+```bash
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh
+bash miniconda.sh -b -p $HOME/miniconda
+export PATH="$HOME/miniconda/bin:$PATH"
+conda init
+source ~/.bashrc
+conda create -n smartagent python=3.11 -y
+conda activate smartagent
+```
+🧹 (Optional) Clean up installer:
+```bash
+rm miniconda.sh
+```
+### 2: Install Python Dependencies
+```bash
+pip install -r requirements.txt
+```
+## 🛠️ Build Your Smart Agent
+
+### 1: Define Agent Behavior
+```bash
+nano my_agent.py
+```
+### Paste the following:
+```bash
+from allora_sdk.agents import BaseSmartAgent
+
+class MyPriceMonitorAgent(BaseSmartAgent):
+    def on_start(self):
+        self.log("Agent initialized.")
+
+    async def on_tick(self):
+        price = await self.fetch_price("BTC")
+        if price > 119000:
+            await self.publish_signal("buy", {"price": price})
+```
+
+
