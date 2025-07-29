@@ -41,8 +41,8 @@ source ~/.bashrc
 ```
 ### 3: Clone Allora SDK
 ```bash
-git clone https://github.com/allora-network/allora-smart-agent-sdk.git
-cd allora-smart-agent-sdk
+git clone git@github.com:allora-network/allora-smart-agent-sdk.git
+
 ```
 ## ⚙️ Environment Setup
 
